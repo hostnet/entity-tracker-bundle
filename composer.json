@@ -1,0 +1,41 @@
+{
+    "name": "hostnet/entity-tracker-bundle",
+    "description": "Wraps around the hostnet/entity-tracker-component and allows configuration of several listener components",
+    "license": "EPL-1.0",
+    "require": {
+        "php"                              : "5.*, >=5.4",
+        "symfony/config"                   : "2.*, >=2.4",
+        "symfony/dependency-injection"     : "2.*, >=2.",
+        "symfony/http-kernel"              : "2.*, >=2.",
+        "hostnet/entity-tracker-component" : "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "suggests": {
+        "hostnet/entity-revision-component" : "Provides the @Revision annotation and listeners",
+        "hostnet/entity-mutation-component" : "Provides the @Mutation annotation and listeners",
+        "hostnet/entity-blamable-component" : "Provides the @Blamable annotation and listeners"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+           "Hostnet\\Bundle\\EntityTrackerBundle\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+           "Hostnet\\Bundle\\EntityTrackerBundle\\" : "test/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Iltar van der Berg",
+            "email": "ivanderberg@hostnet.nl"
+        },
+        {
+            "name": "Yannick de Lange",
+            "email": "ydelange@hostnet.nl"
+        }
+    ]
+}

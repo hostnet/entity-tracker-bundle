@@ -1,0 +1,13 @@
+services:
+    entity_tracker.resolver.blamable:
+        class: Hostnet\Component\EntityBlamable\Resolver\BlamableResolver
+        arguments:
+            - "@entity_tracker.provider.annotation_metadata"
+
+    entity_tracker.listener.blamable:
+        class: Hostnet\Component\EntityBlamable\Listener\BlamableListener
+        arguments:
+            - "@entity_tracker.resolver.blamable"
+            - "" # provider id, (configurable)
+        tags:
+            - { name: doctrine.event_listener, event: entityChanged, priority: 32, method: onEntityChanged }
