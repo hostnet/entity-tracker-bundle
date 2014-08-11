@@ -13,7 +13,6 @@ class Configuration implements ConfigurationInterface
     const REVISION_FACTORY_INTERFACE  = 'Hostnet\Component\EntityRevision\Factory\RevisionFactoryInterface';
     const BLAMABLE_PROVIDER_INTERFACE = 'Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface';
 
-
     /**
      * @see \Symfony\Component\Config\Definition\ConfigurationInterface::getConfigTreeBuilder()
      */
@@ -22,27 +21,32 @@ class Configuration implements ConfigurationInterface
         $tree_builder = new TreeBuilder();
         $root_node    = $tree_builder->root('entity_tracker');
 
+        $component_info = 'Configures and enables the %s listener';
+
         $root_node
             ->children()
                 ->arrayNode('blamable')
+                    ->info(sprintf($component_info, 'blamable'))
                     ->children()
                         ->scalarNode('provider')
-                            ->info('The service for a custom implementation of ' . self::BLAMABLE_PROVIDER_INTERFACE)
+                            ->info('Provider implementation of ' . self::BLAMABLE_PROVIDER_INTERFACE)
                             ->cannotBeEmpty()
                             ->isRequired()
                         ->end()
                     ->end()
                 ->end()
                 ->arrayNode('revision')
+                    ->info(sprintf($component_info, 'revision'))
                     ->children()
                         ->scalarNode('factory')
-                            ->info('The service for a custom implementation of ' . self::REVISION_FACTORY_INTERFACE)
+                            ->info('Factory implementation of ' . self::REVISION_FACTORY_INTERFACE)
                             ->cannotBeEmpty()
                             ->isRequired()
                         ->end()
                     ->end()
                 ->end()
                 ->arrayNode('mutation')
+                    ->info(sprintf($component_info, 'mutation'))
                 ->end()
             ->end();
 
