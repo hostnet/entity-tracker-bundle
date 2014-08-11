@@ -1,0 +1,18 @@
+services:
+    entity_tracker.provider.annotation_metadata:
+        class: Hostnet\Component\EntityTracker\Provider\EntityAnnotationMetadataProvider
+        arguments:
+            - "@annotation_reader"
+
+    entity_tracker.provider.mutation_metadata:
+        class: Hostnet\Component\EntityTracker\Provider\EntityMutationMetadataProvider
+        arguments:
+            - "@annotation_reader"
+
+    entity_tracker.listener.entity_changed:
+        class: Hostnet\Component\EntityTracker\Listener\EntityChangedListener
+        arguments:
+            - "@entity_tracker.provider.annotation_metadata"
+            - "@entity_tracker.provider.mutation_metadata"
+        tags:
+            - { name: doctrine.event_listener, event: preFlush, priority: 15 }

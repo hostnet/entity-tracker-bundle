@@ -1,0 +1,12 @@
+services:
+    entity_changed.resolver.mutation:
+        class: Hostnet\Component\EntityMutation\Resolver\MutationResolver
+        arguments:
+            - "@entity_changed.provider.annotation_metadata"
+
+    entity_changed.listener.mutation:
+        class: Hostnet\Component\EntityMutation\Listener\MutationListener
+        arguments:
+            - "@entity_changed.resolver.mutation"
+        tags:
+            - { name: doctrine.event_listener, event: entityChanged, priority: 8, method: onEntityChanged }
