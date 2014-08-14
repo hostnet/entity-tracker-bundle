@@ -48,14 +48,14 @@ class EntityTrackerExtension extends Extension
                 ->getDefinition('entity_tracker.listener.revision')
                 ->replaceArgument(1, new Reference($config['revision']['factory']));
         } else {
-            $this->validateClass(self::REVISION, 'blamable');
+            $this->validateClass(self::REVISION, 'revision');
         }
 
         if (array_key_exists('mutation', $config)) {
             $this->validateComponent(self::MUTATION, 'mutation');
             $loader->load('mutation.yml');
         } else {
-            $this->validateClass(self::MUTATION, 'blamable');
+            $this->validateClass(self::MUTATION, 'mutation');
         }
     }
 
