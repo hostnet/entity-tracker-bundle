@@ -22,7 +22,7 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->ext = $this
             ->getMockBuilder('Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\EntityTrackerExtension')
-            ->setMethods(['validateComponent'])
+            ->setMethods(['validateComponent', 'validateClass'])
             ->getMock();
 
         $this->container = $this
@@ -99,6 +99,22 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \RuntimeException
+     */
+    public function testValidateClassFails()
+    {
+        $this->assertNull($this->validateClass(get_class($this), 'henk'));
+    }
+
+    /**
+     * No exception means it's correct
+     */
+    public function testValidateClassSuccess()
+    {
+        $this->validateClass('Henk', 'henk');
+    }
+
+    /**
      * @param string $annotation
      * @param string $config
      */
@@ -107,6 +123,19 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
         $ext    = new EntityTrackerExtension();
         $class  = new \ReflectionClass(get_class($ext));
         $method = $class->getMethod('validateComponent');
+        $method->setAccessible(true);
+        $method->invoke($ext, $annotation, $config);
+    }
+
+    /**
+     * @param string $annotation
+     * @param string $config
+     */
+    private function validateClass($annotation, $config)
+    {
+        $ext    = new EntityTrackerExtension();
+        $class  = new \ReflectionClass(get_class($ext));
+        $method = $class->getMethod('validateClass');
         $method->setAccessible(true);
         $method->invoke($ext, $annotation, $config);
     }

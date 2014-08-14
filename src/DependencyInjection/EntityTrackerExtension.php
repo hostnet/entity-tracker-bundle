@@ -16,6 +16,10 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class EntityTrackerExtension extends Extension
 {
+    const BLAMABLE = 'Hostnet\Component\EntityBlamable\Blamable';
+    const MUTATION = 'Hostnet\Component\EntityMutation\Mutation';
+    const REVISION = 'Hostnet\Component\EntityRevision\Revision';
+
     /**
      * @see \Symfony\Component\DependencyInjection\Extension\ExtensionInterface::load()
      */
@@ -28,24 +32,30 @@ class EntityTrackerExtension extends Extension
         $loader->load('services.yml');
 
         if (array_key_exists('blamable', $config)) {
-            $this->validateComponent('Hostnet\Component\EntityBlamable\Blamable', 'blamable');
+            $this->validateComponent(self::BLAMABLE, 'blamable');
             $loader->load('blamable.yml');
             $container
                 ->getDefinition('entity_tracker.listener.blamable')
                 ->replaceArgument(1, new Reference($config['blamable']['provider']));
+        } else {
+            $this->validateClass(self::BLAMABLE, 'blamable');
         }
 
         if (array_key_exists('revision', $config)) {
-            $this->validateComponent('Hostnet\Component\EntityRevision\Revision', 'revision');
+            $this->validateComponent(self::REVISION, 'revision');
             $loader->load('revision.yml');
             $container
                 ->getDefinition('entity_tracker.listener.revision')
                 ->replaceArgument(1, new Reference($config['revision']['factory']));
+        } else {
+            $this->validateClass(self::REVISION, 'blamable');
         }
 
         if (array_key_exists('mutation', $config)) {
-            $this->validateComponent('Hostnet\Component\EntityMutation\Mutation', 'mutation');
+            $this->validateComponent(self::MUTATION, 'mutation');
             $loader->load('mutation.yml');
+        } else {
+            $this->validateClass(self::MUTATION, 'blamable');
         }
     }
 
@@ -63,6 +73,23 @@ class EntityTrackerExtension extends Extension
         throw new \RuntimeException(sprintf(
             'You have configured entity_tracker.%1$s, but you did not require the package. ' .
             'To use this option, please require "hostnet/entity-%1$s-component".',
+            $config_name
+        ));
+    }
+
+    /**
+     * @param string $annotation_class
+     * @param string $config_name
+     * @throws \RuntimeException
+     */
+    protected function validateClass($annotation_class, $config_name)
+    {
+        if (!class_exists($annotation_class)) {
+            return;
+        }
+
+        throw new \RuntimeException(sprintf(
+            'You have required "hostnet/entity-%1$s-component" but you did not configure entity_tracker.%1$s',
             $config_name
         ));
     }
