@@ -1,13 +1,13 @@
 services:
-    entity_changed.resolver.revision:
+    entity_tracker.resolver.revision:
         class: Hostnet\Component\EntityRevision\Resolver\RevisionResolver
         arguments:
-            - "@entity_changed.provider.annotation_metadata"
+            - "@entity_tracker.provider.annotation_metadata"
 
-    entity_changed.listener.revision:
+    entity_tracker.listener.revision:
         class: Hostnet\Component\EntityRevision\Listener\RevisionListener
         arguments:
-            - "@entity_changed.resolver.revision"
+            - "@entity_tracker.resolver.revision"
             - "" # factory service id, (configurable)
         tags:
             - { name: doctrine.event_listener, event: entityChanged, priority: 16, method: onEntityChanged }
