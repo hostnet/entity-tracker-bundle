@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Iltar van der Berg <ivanderberg@hostnet.nl>
  */
-class EntityTrackerExtension extends Extension
+class HostnetEntityTrackerExtension extends Extension
 {
     const BLAMABLE = 'Hostnet\Component\EntityBlamable\Blamable';
     const MUTATION = 'Hostnet\Component\EntityMutation\Mutation';
