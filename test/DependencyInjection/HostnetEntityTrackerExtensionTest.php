@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * @author Iltar van der Berg <ivanderberg@hostnet.nl>
  * @covers Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\EntityTrackerExtension
  */
-class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
+class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
 {
     private $ext;
     private $container;
@@ -21,7 +21,7 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->ext = $this
-            ->getMockBuilder('Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\EntityTrackerExtension')
+            ->getMockBuilder('Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\HostnetEntityTrackerExtension')
             ->setMethods(['validateComponent', 'validateClass'])
             ->getMock();
 
@@ -120,7 +120,7 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
      */
     private function validateComponent($annotation, $config)
     {
-        $ext    = new EntityTrackerExtension();
+        $ext    = new HostnetEntityTrackerExtension();
         $class  = new \ReflectionClass(get_class($ext));
         $method = $class->getMethod('validateComponent');
         $method->setAccessible(true);
@@ -133,7 +133,7 @@ class EntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
      */
     private function validateClass($annotation, $config)
     {
-        $ext    = new EntityTrackerExtension();
+        $ext    = new HostnetEntityTrackerExtension();
         $class  = new \ReflectionClass(get_class($ext));
         $method = $class->getMethod('validateClass');
         $method->setAccessible(true);

@@ -68,7 +68,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ...
-            new Hostnet\Bundle\EntityTrackerBundle\EntityTrackerBundle()
+            new Hostnet\Bundle\EntityTrackerBundle\HostnetEntityTrackerBundle()
             // ...
         ];
 

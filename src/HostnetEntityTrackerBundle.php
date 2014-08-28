@@ -6,7 +6,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * @author Yannick de Lange <ydelange@hostnet.nl>
  */
-class EntityTrackerBundle extends Bundle
+class HostnetEntityTrackerBundle extends Bundle
 {
 
 }
