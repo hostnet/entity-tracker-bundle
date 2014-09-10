@@ -39,7 +39,7 @@ Installing is pretty easy, this package is available on [packagist](https://pack
 
 ```javascript
     "require" : {
-        "hostnet/entity-tracker-bundle" : "0.*"
+        "hostnet/entity-tracker-bundle" : "1.*"
     }
 
 ```
@@ -88,8 +88,8 @@ If you are using entities in your bundle, your bundle should have a dependency o
 The template is as following:
 ```yml
 
-# Default configuration for extension with alias: "entity_tracker"
-entity_tracker:
+# Default configuration for extension with alias: "hostnet_entity_tracker"
+hostnet_entity_tracker:
 
     # Configures and enables the blamable listener
     blamable:
@@ -105,9 +105,6 @@ entity_tracker:
 
     # Configures and enables the mutation listener
     mutation: ~
-
-
-
 ```
 
 ##### Configuring the Blamable Component
@@ -126,7 +123,7 @@ services:
 
 _config.yml_
 ```yml
-entity_tracker:
+hostnet_entity_tracker:
     blamable:
         provider: acme.provider.blamable
 
@@ -137,7 +134,7 @@ The Mutation Component has no required options. All you have to do to enable it,
 
 _config.yml_
 ```yml
-entity_tracker:
+hostnet_entity_tracker:
     mutation: ~
 
 ```
@@ -158,7 +155,7 @@ services:
 
 _config.yml_
 ```yml
-entity_tracker:
+hostnet_entity_tracker:
     revision:
         factory: acme.factory.revision
 
