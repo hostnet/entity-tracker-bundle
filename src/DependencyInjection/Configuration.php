@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $tree_builder = new TreeBuilder();
-        $root_node    = $tree_builder->root('entity_tracker');
+        $root_node    = $tree_builder->root('hostnet_entity_tracker');
 
         $component_info = 'Configures and enables the %s listener';
 
