@@ -9,4 +9,4 @@ services:
         arguments:
             - "@entity_tracker.resolver.mutation"
         tags:
-            - { name: doctrine.event_listener, event: entityChanged, priority: 8, method: onEntityChanged }
+            - { name: doctrine.event_listener, event: entityChanged, priority: 8 }

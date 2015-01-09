@@ -3,21 +3,19 @@ namespace Hostnet\Bundle\EntityTrackerBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Test the DoctrineExtensionBundleExtension methods
  *
  * @author Iltar van der Berg <ivanderberg@hostnet.nl>
- * @covers Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\EntityTrackerExtension
+ * @covers Hostnet\Bundle\EntityTrackerBundle\DependencyInjection\HostnetEntityTrackerExtension
  */
 class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
 {
     private $ext;
     private $container;
 
-    /**
-     * @see PHPUnit_Framework_TestCase::setUp()
-     */
     public function setUp()
     {
         $this->ext = $this
@@ -25,48 +23,26 @@ class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
             ->setMethods(['validateComponent', 'validateClass'])
             ->getMock();
 
-        $this->container = $this
-            ->getMockBuilder('Symfony\Component\DependencyInjection\ContainerBuilder')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->container = new ContainerBuilder();
     }
 
     public function testLoadRevision()
     {
-        $configs = ['entity_tracker' => ['revision' => ['factory' => 'henk']]];
-
-        $definition = new Definition(null, ['piet', 'hans']);
-
-        $this->container
-            ->expects($this->once())
-            ->method('getDefinition')
-            ->with('entity_tracker.listener.revision')
-            ->willReturn($definition);
-
-        $this->ext->load($configs, $this->container);
-
+        $this->ext->load(['entity_tracker' => ['revision' => ['factory' => 'henk']]], $this->container);
+        $definition = $this->container->getDefinition('entity_tracker.listener.revision');
         $this->assertEquals('henk', $definition->getArgument(1));
     }
 
     public function testLoadBlamable()
     {
         $configs = ['entity_tracker' => ['blamable' => ['provider' => 'henk']]];
-
-        $definition = new Definition(null, ['piet', 'hans']);
-
         $this->ext
             ->expects($this->once())
             ->method('validateComponent')
             ->with('Hostnet\Component\EntityBlamable\Blamable', 'blamable');
 
-        $this->container
-            ->expects($this->once())
-            ->method('getDefinition')
-            ->with('entity_tracker.listener.blamable')
-            ->willReturn($definition);
-
         $this->ext->load($configs, $this->container);
-
+        $definition = $this->container->getDefinition('entity_tracker.listener.blamable');
         $this->assertEquals('henk', $definition->getArgument(1));
     }
 

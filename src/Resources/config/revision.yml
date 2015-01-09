@@ -9,6 +9,7 @@ services:
         arguments:
             - "@entity_tracker.resolver.revision"
             - "" # factory service id, (configurable)
+            - "@logger"
         tags:
-            - { name: doctrine.event_listener, event: entityChanged, priority: 16, method: onEntityChanged }
-            - { name: doctrine.event_listener, event: preFlush, priority: 20 }
+            - { name: doctrine.event_listener, event: entityChanged, priority: 16 }
+            - { name: doctrine.event_listener, event: postFlush, priority: 20 }
