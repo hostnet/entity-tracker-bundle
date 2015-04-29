@@ -14,5 +14,6 @@ services:
         arguments:
             - "@entity_tracker.provider.annotation_metadata"
             - "@entity_tracker.provider.mutation_metadata"
+            - "@?logger"
         tags:
             - { name: doctrine.event_listener, event: preFlush, priority: 15 }

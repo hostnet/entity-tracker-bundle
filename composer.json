@@ -7,7 +7,7 @@
         "symfony/config"                   : "2.*, >=2.4",
         "symfony/dependency-injection"     : "2.*, >=2.4",
         "symfony/http-kernel"              : "2.*, >=2.4",
-        "hostnet/entity-tracker-component" : "1.*",
+        "hostnet/entity-tracker-component" : "^1.1.0",
         "psr/log"                          : "1.*"
     },
     "require-dev": {
