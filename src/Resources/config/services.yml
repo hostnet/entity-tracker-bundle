@@ -8,6 +8,7 @@ services:
         class: Hostnet\Component\EntityTracker\Provider\EntityMutationMetadataProvider
         arguments:
             - "@annotation_reader"
+            - "@?logger"
 
     entity_tracker.listener.entity_changed:
         class: Hostnet\Component\EntityTracker\Listener\EntityChangedListener
