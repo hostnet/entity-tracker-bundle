@@ -1,8 +1,6 @@
 <?php
 namespace Hostnet\Bundle\EntityTrackerBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -35,7 +33,7 @@ class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testLoadBlamable()
     {
-        $configs = ['entity_tracker' => ['blamable' => ['provider' => 'henk']]];
+        $configs = ['entity_tracker' => ['blamable' => ['provider' => 'henk', 'default_username' => 'eux']]];
         $this->ext
             ->expects($this->once())
             ->method('validateComponent')
@@ -44,6 +42,8 @@ class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
         $this->ext->load($configs, $this->container);
         $definition = $this->container->getDefinition('entity_tracker.listener.blamable');
         $this->assertEquals('henk', $definition->getArgument(1));
+        $default_username_definition = $this->container->getDefinition(Configuration::BLAMABLE_DEFAULT_PROVIDER);
+        $this->assertEquals('eux', $default_username_definition->getArgument(1));
     }
 
     public function testLoadMutation()

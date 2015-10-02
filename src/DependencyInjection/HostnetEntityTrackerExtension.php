@@ -37,6 +37,11 @@ class HostnetEntityTrackerExtension extends Extension
             $container
                 ->getDefinition('entity_tracker.listener.blamable')
                 ->replaceArgument(1, new Reference($config['blamable']['provider']));
+            if (isset($config['blamable']['default_username'])) {
+                $container
+                    ->getDefinition(Configuration::BLAMABLE_DEFAULT_PROVIDER)
+                    ->replaceArgument(1, $config['blamable']['default_username']);
+            }
         } else {
             $this->validateClass(self::BLAMABLE, 'blamable');
         }

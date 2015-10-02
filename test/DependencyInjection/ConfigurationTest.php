@@ -54,7 +54,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $configs = [
             'entity_tracker' => [
-                'blamable' => ['provider' => 'henk'],
+                'blamable' => ['provider' => 'henk', 'default_username' => 'eux'],
                 'revision' => ['factory'  => 'henk'],
                 'mutation' => [],
             ]
