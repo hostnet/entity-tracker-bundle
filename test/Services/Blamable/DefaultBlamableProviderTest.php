@@ -14,7 +14,8 @@ class DefaultBlamableProviderTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->token_storage = $this->getMock(TokenStorageInterface::class);
+        $this->token_storage = $this->getMock(
+            'Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface');
     }
 
     public function testGetters()
