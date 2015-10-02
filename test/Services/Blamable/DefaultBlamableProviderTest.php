@@ -5,10 +5,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
- * @covers Hostnet\Bundle\EntityTrackerBundle\Services\Blamable\HostnetBlamableProvider
+ * @covers Hostnet\Bundle\EntityTrackerBundle\Services\Blamable\DefaultBlamableProvider
  * @author Eunice Valdez <evaldez@hostnet.nl>
  */
-class HostnetBlamableProviderTest extends \PHPUnit_Framework_TestCase
+class DefaultBlamableProviderTest extends \PHPUnit_Framework_TestCase
 {
     private $token_storage;
 
@@ -19,12 +19,12 @@ class HostnetBlamableProviderTest extends \PHPUnit_Framework_TestCase
 
     public function testGetters()
     {
-        $blamable_provider = new HostnetBlamableProvider($this->token_storage, "provided_user");
+        $blamable_provider = new DefaultBlamableProvider($this->token_storage, "provided_user");
         $this->assertEquals("provided_user", $blamable_provider->getUpdatedBy());
 
         $token = new UsernamePasswordToken("phpunit", "hostnet", "thisisakey");
         $this->token_storage->expects($this->once())->method("getToken")->willReturn($token);
         $this->assertEquals("phpunit", $blamable_provider->getUpdatedBy());
-        $this->assertTrue($blamable_provider->getChangedAt() instanceof \DateTime);
+        $this->assertInstanceOf('\DateTime', $blamable_provider->getChangedAt());
     }
 }

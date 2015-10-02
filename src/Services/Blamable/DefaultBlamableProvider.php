@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
  *
  * @author Eunice Valdez <evaldez@hostnet.nl>
  */
-class HostnetBlamableProvider implements BlamableProviderInterface
+class DefaultBlamableProvider implements BlamableProviderInterface
 {
     /**
      * @var string
@@ -24,13 +24,13 @@ class HostnetBlamableProvider implements BlamableProviderInterface
     private $token_storage;
 
     /**
-     * @param string $application
+     * @param string $username
      * @param TokenStorageInterface $token_storage
      */
-    public function __construct(TokenStorageInterface $token_storage, $application)
+    public function __construct(TokenStorageInterface $token_storage, $username)
     {
         $this->token_storage = $token_storage;
-        $this->application   = $application;
+        $this->username   = $username;
     }
 
     /**
@@ -40,9 +40,8 @@ class HostnetBlamableProvider implements BlamableProviderInterface
     {
         if (($token = $this->token_storage->getToken()) instanceof TokenInterface) {
             return $token->getUsername();
-        } else {
-            return $this->application;
         }
+        return $this->username;
     }
 
     /**
