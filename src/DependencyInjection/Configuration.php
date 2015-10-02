@@ -12,6 +12,7 @@ class Configuration implements ConfigurationInterface
 {
     const REVISION_FACTORY_INTERFACE  = 'Hostnet\Component\EntityRevision\Factory\RevisionFactoryInterface';
     const BLAMABLE_PROVIDER_INTERFACE = 'Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface';
+    const BLAMABLE_DEFAULT_PROVIDER   = "entity_tracker.provider.blamable";
 
     /**
      * @see \Symfony\Component\Config\Definition\ConfigurationInterface::getConfigTreeBuilder()
@@ -32,6 +33,9 @@ class Configuration implements ConfigurationInterface
                             ->info('Provider implementation of ' . self::BLAMABLE_PROVIDER_INTERFACE)
                             ->cannotBeEmpty()
                             ->isRequired()
+                            ->defaultValue(self::BLAMABLE_DEFAULT_PROVIDER)
+                        ->end()
+                        ->scalarNode('default_username')
                         ->end()
                     ->end()
                 ->end()
