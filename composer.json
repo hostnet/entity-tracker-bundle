@@ -3,17 +3,17 @@
     "description": "Wraps around the hostnet/entity-tracker-component and allows configuration of several listener components",
     "license": "MIT",
     "require": {
-        "php"                               : "^5.4",
-        "symfony/config"                    : "^2.6",
-        "symfony/dependency-injection"      : "^2.6",
-        "symfony/http-kernel"               : "^2.6",
+        "php"                               : ">=5.5",
+        "symfony/config"                    : "^3.0|^2.6",
+        "symfony/dependency-injection"      : "^3.0|^2.6",
+        "symfony/http-kernel"               : "^3.0|^2.6",
         "hostnet/entity-tracker-component"  : "^1.2.0",
         "psr/log"                           : "1.*"
     },
     "require-dev": {
         "hostnet/entity-blamable-component" : "^1.0",
-        "phpunit/phpunit"                   : "4.*",
-        "symfony/security"                  : "^2.6"
+        "phpunit/phpunit"                   : "5.*|4.*",
+        "symfony/security"                  : "^3.0|^2.6"
     },
     "suggest": {
         "hostnet/entity-revision-component" : "Provides the @Revision annotation and listeners",
