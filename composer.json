@@ -1,49 +1,52 @@
 {
-    "name": "hostnet/entity-tracker-bundle",
-    "description": "Wraps around the hostnet/entity-tracker-component and allows configuration of several listener components",
-    "license": "MIT",
+    "name":              "hostnet/entity-tracker-bundle",
+    "description":       "Wraps around the hostnet/entity-tracker-component and allows configuration of several listener components",
+    "license":           "MIT",
     "require": {
-        "php"                               : ">=5.5",
-        "symfony/config"                    : "^3.0|^2.6",
-        "symfony/dependency-injection"      : "^3.0|^2.6",
-        "symfony/http-kernel"               : "^3.0|^2.6",
-        "hostnet/entity-tracker-component"  : "^1.2.0",
-        "psr/log"                           : "1.*"
+        "php":                              ">=5.5",
+        "hostnet/entity-tracker-component": "^1.2.0",
+        "psr/log":                          "1.*",
+        "symfony/config":                   "^3.0|^2.6",
+        "symfony/dependency-injection":     "^3.0|^2.6",
+        "symfony/http-kernel":              "^3.0|^2.6"
     },
     "require-dev": {
-        "hostnet/entity-blamable-component" : "^1.0",
-        "phpunit/phpunit"                   : "5.*|4.*",
-        "symfony/security"                  : "^3.0|^2.6"
+        "hostnet/entity-blamable-component": "^1.0",
+        "phpunit/phpunit":                   "5.*|4.*",
+        "symfony/security":                  "^3.0|^2.6",
+        "symfony/security-bundle":           "^3.0|^2.6"
     },
     "suggest": {
-        "hostnet/entity-revision-component" : "Provides the @Revision annotation and listeners",
-        "hostnet/entity-mutation-component" : "Provides the @Mutation annotation and listeners",
-        "hostnet/entity-blamable-component" : "Provides the @Blamable annotation and listeners"
+        "hostnet/entity-revision-component": "Provides the @Revision annotation and listeners",
+        "hostnet/entity-mutation-component": "Provides the @Mutation annotation and listeners",
+        "hostnet/entity-blamable-component": "Provides the @Blamable annotation and listeners"
     },
     "conflict": {
-        "hostnet/entity-revision-component" : "<1.1"
+        "hostnet/entity-revision-component": "<1.1"
     },
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-           "Hostnet\\Bundle\\EntityTrackerBundle\\" : "src/"
+            "Hostnet\\Bundle\\EntityTrackerBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-           "Hostnet\\Bundle\\EntityTrackerBundle\\" : "test/"
+            "Hostnet\\Bundle\\EntityTrackerBundle\\": "test/"
         }
     },
     "archive": {
-        "exclude": [ "/test" ]
+        "exclude": [
+            "/test"
+        ]
     },
     "authors": [
         {
-            "name": "Iltar van der Berg",
+            "name":  "Iltar van der Berg",
             "email": "ivanderberg@hostnet.nl"
         },
         {
-            "name": "Yannick de Lange",
+            "name":  "Yannick de Lange",
             "email": "ydelange@hostnet.nl"
         }
     ]
