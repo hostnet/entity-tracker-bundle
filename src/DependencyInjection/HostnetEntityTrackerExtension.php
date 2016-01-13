@@ -34,6 +34,9 @@ class HostnetEntityTrackerExtension extends Extension
         if (array_key_exists('blamable', $config)) {
             $this->validateComponent(self::BLAMABLE, 'blamable');
             $loader->load('blamable.yml');
+            if (class_exists('Symfony\Bundle\SecurityBundle\SecurityBundle')) {
+                $loader->load('security.yml');
+            }
             $container
                 ->getDefinition('entity_tracker.listener.blamable')
                 ->replaceArgument(1, new Reference($config['blamable']['provider']));

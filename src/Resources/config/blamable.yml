@@ -12,8 +12,4 @@ services:
         tags:
             - { name: doctrine.event_listener, event: entityChanged, priority: 32, method: onEntityChanged }
 
-    entity_tracker.provider.blamable:
-        class: Hostnet\Bundle\EntityTrackerBundle\Services\Blamable\DefaultBlamableProvider
-        arguments:
-            - "@security.token_storage"
-            - "" # It is being injected by the Extension
+
