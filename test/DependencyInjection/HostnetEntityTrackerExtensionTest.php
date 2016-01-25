@@ -33,6 +33,7 @@ class HostnetEntityTrackerExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testLoadBlamable()
     {
+        $this->container->setParameter('kernel.bundles', ['SecurityBundle' => 'BlahBlahClass']);
         $configs = ['entity_tracker' => ['blamable' => ['provider' => 'henk', 'default_username' => 'eux']]];
         $this->ext
             ->expects($this->once())
