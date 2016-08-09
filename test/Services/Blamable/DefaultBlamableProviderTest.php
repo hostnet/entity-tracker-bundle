@@ -13,8 +13,7 @@ class DefaultBlamableProviderTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->token_storage = $this->getMock(
-            'Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface'
+        $this->token_storage = $this->createMock('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface'
         );
     }
 
