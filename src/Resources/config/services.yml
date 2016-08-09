@@ -18,3 +18,4 @@ services:
             - "@?logger"
         tags:
             - { name: doctrine.event_listener, event: preFlush, priority: 15 }
+            - { name: doctrine.event_listener, event: prePersist, priority: 15 }
