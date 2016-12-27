@@ -109,6 +109,21 @@ hostnet_entity_tracker:
 
 ##### Configuring the Blamable Component
 The Blamable Component has 1 required option, the provider. The provider is [the class that implements the BlamableProviderInterface as explained in the documation](https://github.com/hostnet/entity-blamable-component/#creating-a-provider-for-the-username-and-timestamp). The argument passed to that option is the name of the service you are using for it.
+There are two ways you can go about using these providers.
+The first way is to make use of the [default blamamable provider](https://github.com/hostnet/entity-tracker-bundle/blob/master/src/Services/Blamable/DefaultBlamableProvider.php) that is shipped with this bundle. 
+This can be done using the following method:
+
+_config.yml_
+```yml
+hostnet_entity_tracker:
+    blamable:
+        provider: entity_tracker.provider.blamable
+        default_username: "username for example purposes"
+```
+
+It is also possible to create your own BlamamableProvider by implementing the BlamableProviderInterface.
+If you choose to do this the following method can be used to make use of your custom BlamableProvider.
+
 
 > Note: The following example is based on the AcmeBlamableProvider from the link above
 
