@@ -6,15 +6,15 @@
         "php":                              "5.*,>=5.6||7.*",
         "hostnet/entity-tracker-component": "^2.0.0",
         "psr/log":                          "^1.0.0",
-        "symfony/config":                   "^3.0|^2.6",
-        "symfony/dependency-injection":     "^3.0|^2.6",
-        "symfony/http-kernel":              "^3.0|^2.6"
+        "symfony/config":                   "^2.6|^3.0|^4.0",
+        "symfony/dependency-injection":     "^2.6|^3.0|^4.0",
+        "symfony/http-kernel":              "^2.6|^3.0|^4.0"
     },
     "require-dev": {
         "hostnet/entity-blamable-component": "^1.0.0",
         "phpunit/phpunit":                   "^5.5.0",
-        "symfony/security":                  "^3.0|^2.6",
-        "symfony/security-bundle":           "^3.0|^2.6"
+        "symfony/security":                  "^2.6|^3.0|^4.0",
+        "symfony/security-bundle":           "^2.6|^3.0|^4.0"
     },
     "suggest": {
         "hostnet/entity-revision-component": "Provides the @Revision annotation and listeners",
