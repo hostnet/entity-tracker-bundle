@@ -2,26 +2,29 @@
     "name":              "hostnet/entity-tracker-bundle",
     "description":       "Wraps around the hostnet/entity-tracker-component and allows configuration of several listener components",
     "license":           "MIT",
+    "minimum-stability": "stable",
     "require": {
-        "php":                              "5.*,>=5.6||7.*",
-        "hostnet/entity-tracker-component": "^2.0.0",
-        "psr/log":                          "^1.0.0",
-        "symfony/config":                   "^2.6|^3.0|^4.0",
-        "symfony/dependency-injection":     "^2.6|^3.0|^4.0",
-        "symfony/http-kernel":              "^2.6|^3.0|^4.0"
+        "php":                              ">=7.2",
+        "hostnet/entity-tracker-component": "^1.2.3",
+        "psr/log":                          "^1.1.0",
+        "symfony/config":                   "^4.0.0",
+        "symfony/dependency-injection":     "^4.0.0",
+        "symfony/http-kernel":              "^4.0.0",
+        "symfony/yaml":                     "^4.0.0"
     },
     "require-dev": {
-        "hostnet/entity-blamable-component": "^1.0.0",
-        "phpunit/phpunit":                   "^5.5.0",
-        "symfony/security":                  "^2.6|^3.0|^4.0",
-        "symfony/security-bundle":           "^2.6|^3.0|^4.0"
+        "hostnet/entity-blamable-component": "^1.0.3",
+        "hostnet/phpcs-tool":                "^8.3.3",
+        "phpunit/phpunit":                   "^8.1.3",
+        "symfony/framework-bundle":          "^4.2.8",
+        "symfony/security":                  "^4.2.8",
+        "symfony/security-bundle":           "^4.2.8"
     },
     "suggest": {
-        "hostnet/entity-revision-component": "Provides the @Revision annotation and listeners",
+        "hostnet/entity-blamable-component": "Provides the @Blamable annotation and listeners",
         "hostnet/entity-mutation-component": "Provides the @Mutation annotation and listeners",
-        "hostnet/entity-blamable-component": "Provides the @Blamable annotation and listeners"
+        "hostnet/entity-revision-component": "Provides the @Revision annotation and listeners"
     },
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Hostnet\\Bundle\\EntityTrackerBundle\\": "src/"
@@ -29,22 +32,12 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Hostnet\\Bundle\\EntityTrackerBundle\\": "test/"
+            "Hostnet\\Bundle\\EntityTrackerBundle\\": "tests/"
         }
     },
     "archive": {
         "exclude": [
-            "/test"
+            "/tests"
         ]
-    },
-    "authors": [
-        {
-            "name":  "Iltar van der Berg",
-            "email": "ivanderberg@hostnet.nl"
-        },
-        {
-            "name":  "Yannick de Lange",
-            "email": "ydelange@hostnet.nl"
-        }
-    ]
+    }
 }
