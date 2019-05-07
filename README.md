@@ -22,7 +22,7 @@ The Entity Tracker Bundle is a bundle used to configure the following components
   - [hostnet/entity-mutation-component](https://github.com/hostnet/entity-mutation-component)
   - [hostnet/entity-revision-component](https://github.com/hostnet/entity-revision-component)
 
-It will let you configure those components using the config.yml
+It will let you configure those components using the config.yaml
 
 > Note: Only the Entity Tracker Component is mandatory, as this bundle configures the services. The other components only need to be configured if they are present.
 
@@ -37,11 +37,10 @@ Installing is pretty easy, this package is available on [packagist](https://pack
 
 #### Example
 
-```javascript
+```json
     "require" : {
-        "hostnet/entity-tracker-bundle" : "1.*"
+        "hostnet/entity-tracker-bundle" : "^2.0.0"
     }
-
 ```
 > Note: You can use dev-master if you want the latest changes, but this is not recommended for production code!
 
@@ -86,7 +85,7 @@ If you are using entities in your bundle, your bundle should have a dependency o
 > Note: Based on what is available, the configuration requirements are determined. If one of the bundles or Entity packages has a dependency on one of the components, this bundle will also configure it for you.
 
 The template is as following:
-```yml
+```yaml
 
 # Default configuration for extension with alias: "hostnet_entity_tracker"
 hostnet_entity_tracker:
@@ -113,8 +112,8 @@ There are two ways you can go about using these providers.
 The first way is to make use of the [default blamamable provider](https://github.com/hostnet/entity-tracker-bundle/blob/master/src/Services/Blamable/DefaultBlamableProvider.php) that is shipped with this bundle. 
 This can be done using the following method:
 
-_config.yml_
-```yml
+_config.yaml_
+```yaml
 hostnet_entity_tracker:
     blamable:
         provider: entity_tracker.provider.blamable
@@ -127,8 +126,8 @@ If you choose to do this the following method can be used to make use of your cu
 
 > Note: The following example is based on the AcmeBlamableProvider from the link above
 
-_services.yml_
-```yml
+_services.yaml_
+```yaml
 services:
     acme.provider.blamable:
         class: Acme\Bundle\AcmeBundle\Service\AcmeBlamableProvider
@@ -136,8 +135,8 @@ services:
             - 'username for example purposes'
 ```
 
-_config.yml_
-```yml
+_config.yaml_
+```yaml
 hostnet_entity_tracker:
     blamable:
         provider: acme.provider.blamable
@@ -147,8 +146,8 @@ hostnet_entity_tracker:
 ##### Configuring the Mutation Component
 The Mutation Component has no required options. All you have to do to enable it, is add "mutation: ~" to the config.
 
-_config.yml_
-```yml
+_config.yaml_
+```yaml
 hostnet_entity_tracker:
     mutation: ~
 
@@ -159,8 +158,8 @@ The Revision Component has 1 required option, the factory. The factory is [the c
 
 > Note: The following example is based on the AcmeRevisionFactory from the link above
 
-_services.yml_
-```yml
+_services.yaml_
+```yaml
 services:
     acme.factory.revision:
         class: Acme\Bundle\AcmeBundle\Service\AcmeBlamableProvider
@@ -168,8 +167,8 @@ services:
             - 'author->name for example purposes'
 ```
 
-_config.yml_
-```yml
+_config.yaml_
+```yaml
 hostnet_entity_tracker:
     revision:
         factory: acme.factory.revision
