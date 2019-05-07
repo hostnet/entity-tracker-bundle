@@ -1,4 +1,9 @@
 <?php
+/**
+ * @copyright 2015-present Hostnet B.V.
+ */
+declare(strict_types=1);
+
 namespace Hostnet\Bundle\EntityTrackerBundle\Services\Blamable;
 
 use Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface;
@@ -6,48 +11,42 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
- * Provides the logged username and the current time for the entities that will be using the
- * blamable component.
- *
- * @author Eunice Valdez <evaldez@hostnet.nl>
+ * Provides the logged username and the current time for the entities that will be using the blamable component.
  */
 class DefaultBlamableProvider implements BlamableProviderInterface
 {
-    /**
-     * @var string
-     */
-    private $application;
-
     /**
      * @var TokenStorageInterface
      */
     private $token_storage;
 
     /**
-     * @param string $username
-     * @param TokenStorageInterface $token_storage
+     * @var string
      */
-    public function __construct(TokenStorageInterface $token_storage, $username)
+    private $username;
+
+    public function __construct(TokenStorageInterface $token_storage, string $username)
     {
         $this->token_storage = $token_storage;
-        $this->username   = $username;
+        $this->username      = $username;
     }
 
     /**
-     * @see \Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface::getUpdatedBy()
+     * {@inheritdoc}
      */
-    public function getUpdatedBy()
+    public function getUpdatedBy(): string
     {
         if (($token = $this->token_storage->getToken()) instanceof TokenInterface) {
             return $token->getUsername();
         }
+
         return $this->username;
     }
 
     /**
-     * @see \Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface::getChangedAt()
+     * {@inheritdoc}
      */
-    public function getChangedAt()
+    public function getChangedAt(): \DateTime
     {
         return new \DateTime();
     }

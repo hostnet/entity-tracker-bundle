@@ -1,4 +1,9 @@
 <?php
+/**
+ * @copyright 2014-present Hostnet B.V.
+ */
+declare(strict_types=1);
+
 namespace Hostnet\Bundle\EntityTrackerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -7,42 +12,33 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-/**
- * This is the class that loads and manages your bundle configuration
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
- *
- * @author Iltar van der Berg <ivanderberg@hostnet.nl>
- */
 class HostnetEntityTrackerExtension extends Extension
 {
-    const BLAMABLE = 'Hostnet\Component\EntityBlamable\Blamable';
-    const MUTATION = 'Hostnet\Component\EntityMutation\Mutation';
-    const REVISION = 'Hostnet\Component\EntityRevision\Revision';
+    private const BLAMABLE = 'Hostnet\Component\EntityBlamable\Blamable';
+    private const MUTATION = 'Hostnet\Component\EntityMutation\Mutation';
+    private const REVISION = 'Hostnet\Component\EntityRevision\Revision';
 
-    /**
-     * @see \Symfony\Component\DependencyInjection\Extension\ExtensionInterface::load()
-     */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader        = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
 
-        $loader->load('services.yml');
+        $loader->load('services.yaml');
 
-        if (array_key_exists('blamable', $config)) {
+        if (\array_key_exists('blamable', $config)) {
             $this->validateComponent(self::BLAMABLE, 'blamable');
-            $loader->load('blamable.yml');
-            if (
-                $container->hasParameter('kernel.bundles')
-                && array_key_exists('SecurityBundle', $container->getParameter('kernel.bundles'))
+            $loader->load('blamable.yaml');
+            if ($container->hasParameter('kernel.bundles')
+                && \array_key_exists('SecurityBundle', $container->getParameter('kernel.bundles'))
             ) {
-                $loader->load('security.yml');
+                $loader->load('security.yaml');
             }
+
             $container
                 ->getDefinition('entity_tracker.listener.blamable')
                 ->replaceArgument(1, new Reference($config['blamable']['provider']));
+
             if (isset($config['blamable']['default_username'])) {
                 $container
                     ->getDefinition(Configuration::BLAMABLE_DEFAULT_PROVIDER)
@@ -52,9 +48,9 @@ class HostnetEntityTrackerExtension extends Extension
             $this->validateClass(self::BLAMABLE, 'blamable');
         }
 
-        if (array_key_exists('revision', $config)) {
+        if (\array_key_exists('revision', $config)) {
             $this->validateComponent(self::REVISION, 'revision');
-            $loader->load('revision.yml');
+            $loader->load('revision.yaml');
             $container
                 ->getDefinition('entity_tracker.listener.revision')
                 ->replaceArgument(1, new Reference($config['revision']['factory']));
@@ -62,9 +58,9 @@ class HostnetEntityTrackerExtension extends Extension
             $this->validateClass(self::REVISION, 'revision');
         }
 
-        if (array_key_exists('mutation', $config)) {
+        if (\array_key_exists('mutation', $config)) {
             $this->validateComponent(self::MUTATION, 'mutation');
-            $loader->load('mutation.yml');
+            $loader->load('mutation.yaml');
         } else {
             $this->validateClass(self::MUTATION, 'mutation');
         }
@@ -73,9 +69,10 @@ class HostnetEntityTrackerExtension extends Extension
     /**
      * @param string $annotation_class
      * @param string $config_name
+     *
      * @throws \RuntimeException
      */
-    protected function validateComponent($annotation_class, $config_name)
+    protected function validateComponent(string $annotation_class, string $config_name): void
     {
         if (class_exists($annotation_class)) {
             return;
@@ -91,9 +88,10 @@ class HostnetEntityTrackerExtension extends Extension
     /**
      * @param string $annotation_class
      * @param string $config_name
+     *
      * @throws \RuntimeException
      */
-    protected function validateClass($annotation_class, $config_name)
+    protected function validateClass(string $annotation_class, string $config_name): void
     {
         if (!class_exists($annotation_class)) {
             return;

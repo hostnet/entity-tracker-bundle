@@ -1,4 +1,3 @@
-# Composer
-vendor/*
-composer.phar
+/var/
+/vendor/
 composer.lock

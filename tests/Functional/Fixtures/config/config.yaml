@@ -1,0 +1,15 @@
+services:
+    logger:
+        class: Psr\Log\NullLogger
+
+    entity_tracker.resolver.blamable.public:
+        alias: 'entity_tracker.resolver.blamable'
+        public: true
+
+framework:
+    test: true
+    secret: test
+
+hostnet_entity_tracker:
+    blamable:
+        provider: Hostnet\Bundle\EntityTrackerBundle\Services\Blamable\DefaultBlamableProvider
