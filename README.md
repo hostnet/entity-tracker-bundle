@@ -37,11 +37,10 @@ Installing is pretty easy, this package is available on [packagist](https://pack
 
 #### Example
 
-```javascript
+```json
     "require" : {
-        "hostnet/entity-tracker-bundle" : "1.*"
+        "hostnet/entity-tracker-bundle" : "^2.0.0"
     }
-
 ```
 > Note: You can use dev-master if you want the latest changes, but this is not recommended for production code!
 
