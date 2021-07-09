@@ -28,7 +28,7 @@ It will let you configure those components using the config.yaml
 
 Requirements
 ------------
-The tracker bundle requires at least php 5.4 and runs on Doctrine2 and Symfony2. For specific requirements, please check [composer.json](../master/composer.json)
+The tracker bundle requires at least php 7.3 and runs on Doctrine2 and Symfony2. For specific requirements, please check [composer.json](../master/composer.json)
 
 Installation
 ------------
