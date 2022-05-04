@@ -14,7 +14,7 @@
     },
     "require-dev": {
         "hostnet/entity-blamable-component": "^1.0.4",
-        "hostnet/phpcs-tool":                "^8.3.15",
+        "hostnet/phpcs-tool":                "^9.1.0",
         "phpunit/phpunit":                   "^9.5.6",
         "symfony/framework-bundle":          "^4.4||^5.0",
         "symfony/security-bundle":           "^4.4||^5.0"

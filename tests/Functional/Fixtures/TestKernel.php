@@ -22,25 +22,16 @@ class TestKernel extends Kernel
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/config/config.yaml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCacheDir(): string
     {
         return __DIR__ . '/../../../var/cache/' . $this->getEnvironment();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLogDir(): string
     {
         return __DIR__ . '/../../../var/logs';

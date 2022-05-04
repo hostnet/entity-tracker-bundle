@@ -31,9 +31,6 @@ class DefaultBlamableProvider implements BlamableProviderInterface
         $this->username      = $username;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUpdatedBy(): string
     {
         if (($token = $this->token_storage->getToken()) instanceof TokenInterface) {
@@ -43,9 +40,6 @@ class DefaultBlamableProvider implements BlamableProviderInterface
         return $this->username;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getChangedAt(): \DateTime
     {
         return new \DateTime();
