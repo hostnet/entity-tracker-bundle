@@ -34,6 +34,12 @@
             "Hostnet\\Bundle\\EntityTrackerBundle\\": "tests/"
         }
     },
+    "config": {
+        "allow-plugins": {
+            "hostnet/*":                                      true,
+            "dealerdirect/phpcodesniffer-composer-installer": false
+        }
+    },
     "archive": {
         "exclude": [
             "/tests"
