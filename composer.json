@@ -16,8 +16,8 @@
         "hostnet/entity-blamable-component": "^1.0.4",
         "hostnet/phpcs-tool":                "^9.1.0",
         "phpunit/phpunit":                   "^9.5.6",
-        "symfony/framework-bundle":          "^4.4||^5.0",
-        "symfony/security-bundle":           "^4.4||^5.0"
+        "symfony/framework-bundle":          "^5.4.3",
+        "symfony/security-bundle":           "^5.4.3"
     },
     "suggest": {
         "hostnet/entity-blamable-component": "Provides the @Blamable annotation and listeners",
