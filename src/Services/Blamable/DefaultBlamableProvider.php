@@ -34,7 +34,7 @@ class DefaultBlamableProvider implements BlamableProviderInterface
     public function getUpdatedBy(): string
     {
         if (($token = $this->token_storage->getToken()) instanceof TokenInterface) {
-            return $token->getUsername();
+            return $token->getUserIdentifier();
         }
 
         return $this->username;
