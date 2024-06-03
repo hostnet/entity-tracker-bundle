@@ -4,20 +4,22 @@
     "license":           "MIT",
     "minimum-stability": "stable",
     "require": {
-        "php":                              "^7.3||^8.0",
+        "php":                              "^8.1",
         "hostnet/entity-tracker-component": "^2.0.0",
         "psr/log":                          "^1.1.0",
-        "symfony/config":                   "^4.4||^5.0",
-        "symfony/dependency-injection":     "^4.4||^5.0",
-        "symfony/http-kernel":              "^4.4||^5.0",
-        "symfony/yaml":                     "^4.4||^5.0"
+        "symfony/config":                   "^5.4||^6.0",
+        "symfony/dependency-injection":     "^5.4||^6.0",
+        "symfony/http-kernel":              "^5.4||^6.0",
+        "symfony/yaml":                     "^5.4||^6.0"
     },
     "require-dev": {
         "hostnet/entity-blamable-component": "^1.0.4",
         "hostnet/phpcs-tool":                "^9.1.0",
+        "phpspec/prophecy":                  "^1.19",
         "phpunit/phpunit":                   "^9.5.6",
-        "symfony/framework-bundle":          "^4.4||^5.0",
-        "symfony/security-bundle":           "^4.4||^5.0"
+        "symfony/framework-bundle":          "^5.4||^6.0",
+        "symfony/security-bundle":           "^5.4||^6.0",
+        "phpspec/prophecy-phpunit": "^2.2"
     },
     "suggest": {
         "hostnet/entity-blamable-component": "Provides the @Blamable annotation and listeners",
