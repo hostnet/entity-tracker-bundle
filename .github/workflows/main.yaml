@@ -29,4 +29,5 @@ jobs:
             -   name: phpunit
                 run: php vendor/bin/phpunit
             -   name: phpcs
+                if: matrix.php-versions == '8.1'
                 run: php vendor/bin/phpcs
