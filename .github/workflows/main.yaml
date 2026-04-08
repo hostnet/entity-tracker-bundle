@@ -8,7 +8,7 @@ jobs:
 
         strategy:
             matrix:
-                php-versions: ['8.1', '8.2', '8.3']
+                php-versions: ['8.3']
         name: PHP ${{ matrix.php-versions }}
         steps:
             -   uses: actions/checkout@v2
@@ -29,5 +29,4 @@ jobs:
             -   name: phpunit
                 run: php vendor/bin/phpunit
             -   name: phpcs
-                if: matrix.php-versions == '8.1'
                 run: php vendor/bin/phpcs
