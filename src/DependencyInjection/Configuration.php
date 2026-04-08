@@ -6,23 +6,26 @@ declare(strict_types=1);
 
 namespace Hostnet\Bundle\EntityTrackerBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\HttpKernel\Kernel;
 
 class Configuration implements ConfigurationInterface
 {
-    public const REVISION_FACTORY_INTERFACE  = 'Hostnet\Component\EntityRevision\Factory\RevisionFactoryInterface';
-    public const BLAMABLE_PROVIDER_INTERFACE = 'Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface';
-    public const BLAMABLE_DEFAULT_PROVIDER   = 'entity_tracker.provider.blamable';
+    public const string REVISION_FACTORY_INTERFACE
+        = 'Hostnet\Component\EntityRevision\Factory\RevisionFactoryInterface';
 
-    private const CONFIG_ROOT = 'hostnet_entity_tracker';
+    public const string BLAMABLE_PROVIDER_INTERFACE
+        = 'Hostnet\Component\EntityBlamable\Provider\BlamableProviderInterface';
+
+    public const string BLAMABLE_DEFAULT_PROVIDER
+        = 'entity_tracker.provider.blamable';
+
+    private const string CONFIG_ROOT = 'hostnet_entity_tracker';
 
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $tree_builder = $this->createTreeBuilder();
-        $root_node    = $this->retrieveRootNode($tree_builder);
+        $tree_builder = new TreeBuilder(self::CONFIG_ROOT);
+        $root_node    = $tree_builder->getRootNode();
 
         $component_info = 'Configures and enables the %s listener';
 
@@ -57,31 +60,5 @@ class Configuration implements ConfigurationInterface
             ->end();
 
         return $tree_builder;
-    }
-
-    private function createTreeBuilder(): TreeBuilder
-    {
-        if (Kernel::VERSION_ID >= 40200) {
-            return new TreeBuilder(self::CONFIG_ROOT);
-        }
-
-        if (Kernel::VERSION_ID < 40200) {
-            return new TreeBuilder();
-        }
-
-        throw new \RuntimeException('This bundle can only be used by Symfony 4.0 and up.');
-    }
-
-    private function retrieveRootNode(TreeBuilder $tree_builder): NodeDefinition
-    {
-        if (Kernel::VERSION_ID >= 40200) {
-            return $tree_builder->getRootNode();
-        }
-
-        if (Kernel::VERSION_ID < 40200) {
-            return $tree_builder->root(self::CONFIG_ROOT);
-        }
-
-        throw new \RuntimeException('This bundle can only be used by Symfony 4.0 and up.');
     }
 }
