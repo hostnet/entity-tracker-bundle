@@ -57,7 +57,11 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mutation')
                     ->info(sprintf($component_info, 'mutation'))
                 ->end()
-            ->end();
+                ->scalarNode('cache')
+                    ->info('Specifies cacheadapter service to use')
+                    ->cannotBeEmpty()
+                    ->defaultValue('entity_tracker.cache')
+                ->end();
 
         return $tree_builder;
     }

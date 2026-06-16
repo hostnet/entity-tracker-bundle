@@ -26,6 +26,11 @@ class HostnetEntityTrackerExtension extends Extension
 
         $loader->load('services.yaml');
 
+        $cache = $config['cache'];
+        $container
+            ->getDefinition('entity_tracker.listener.entity_changed')
+            ->replaceArgument(3, new Reference($cache));
+
         if (\array_key_exists('blamable', $config)) {
             $this->validateComponent(self::BLAMABLE, 'blamable');
             $loader->load('blamable.yaml');
@@ -37,7 +42,8 @@ class HostnetEntityTrackerExtension extends Extension
 
             $container
                 ->getDefinition('entity_tracker.listener.blamable')
-                ->replaceArgument(1, new Reference($config['blamable']['provider']));
+                ->replaceArgument(1, new Reference($config['blamable']['provider']))
+                ->replaceArgument(2, new Reference($cache));
 
             if (isset($config['blamable']['default_username'])) {
                 $container
@@ -53,7 +59,8 @@ class HostnetEntityTrackerExtension extends Extension
             $loader->load('revision.yaml');
             $container
                 ->getDefinition('entity_tracker.listener.revision')
-                ->replaceArgument(1, new Reference($config['revision']['factory']));
+                ->replaceArgument(1, new Reference($config['revision']['factory']))
+                ->replaceArgument(3, new Reference($cache));
         } else {
             $this->validateClass(self::REVISION, 'revision');
         }
@@ -61,6 +68,10 @@ class HostnetEntityTrackerExtension extends Extension
         if (\array_key_exists('mutation', $config)) {
             $this->validateComponent(self::MUTATION, 'mutation');
             $loader->load('mutation.yaml');
+
+            $container
+                ->getDefinition('entity_tracker.listener.mutation')
+                ->replaceArgument(1, new Reference($cache));
         } else {
             $this->validateClass(self::MUTATION, 'mutation');
         }

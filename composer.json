@@ -26,6 +26,12 @@
         "hostnet/entity-mutation-component": "Provides the @Mutation annotation and listeners",
         "hostnet/entity-revision-component": "Provides the @Revision annotation and listeners"
     },
+    "conflict": {
+        "hostnet/entity-blamable-component": "<=1.0.7",
+        "hostnet/entity-mutation-component": "<=1.0.7",
+        "hostnet/entity-revision-component": "<=1.1.8",
+        "hostnet/entity-tracker-component":  "<=2.2.3"
+    },
     "autoload": {
         "psr-4": {
             "Hostnet\\Bundle\\EntityTrackerBundle\\": "src/"

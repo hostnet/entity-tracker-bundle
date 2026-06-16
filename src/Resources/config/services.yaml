@@ -1,4 +1,7 @@
 services:
+    entity_tracker.cache:
+        class: Symfony\Component\Cache\Adapter\ArrayAdapter
+
     entity_tracker.provider.annotation_metadata:
         class: Hostnet\Component\EntityTracker\Provider\EntityAnnotationMetadataProvider
         arguments:
@@ -16,6 +19,7 @@ services:
             - "@entity_tracker.provider.annotation_metadata"
             - "@entity_tracker.provider.mutation_metadata"
             - "@?logger"
+            - ""
         tags:
             - { name: doctrine.event_listener, event: preFlush, priority: 15 }
             - { name: doctrine.event_listener, event: prePersist, priority: 15 }
