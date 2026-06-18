@@ -40,7 +40,10 @@ class ConfigurationTest extends TestCase
         $processor     = new Processor();
         $configuration = new Configuration();
 
-        self::assertSame(['cache' => 'entity_tracker.cache'], $processor->processConfiguration($configuration, $configs));
+        self::assertSame(
+            ['cache' => 'entity_tracker.cache'],
+            $processor->processConfiguration($configuration, $configs)
+        );
     }
 
     public function emptyConfigProvider(): array
