@@ -19,7 +19,7 @@ services:
             - "@entity_tracker.provider.annotation_metadata"
             - "@entity_tracker.provider.mutation_metadata"
             - "@?logger"
-            - ""
+            - "" # cacheadapter id (configurable, entity_tracker.cache by default)
         tags:
             - { name: doctrine.event_listener, event: preFlush, priority: 15 }
             - { name: doctrine.event_listener, event: prePersist, priority: 15 }
