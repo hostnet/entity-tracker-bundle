@@ -10,6 +10,7 @@ services:
             - "@entity_tracker.resolver.revision"
             - "" # factory service id, (configurable)
             - "@logger"
+            - "" # cacheadapter id (configurable, entity_tracker.cache by default)
         tags:
             - { name: doctrine.event_listener, event: entityChanged, priority: 16 }
             - { name: doctrine.event_listener, event: postFlush, priority: 20 }

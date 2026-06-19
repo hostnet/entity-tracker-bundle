@@ -8,5 +8,6 @@ services:
         class: Hostnet\Component\EntityMutation\Listener\MutationListener
         arguments:
             - "@entity_tracker.resolver.mutation"
+            - "" # cacheadapter id (configurable, entity_tracker.cache by default)
         tags:
             - { name: doctrine.event_listener, event: entityChanged, priority: 8 }

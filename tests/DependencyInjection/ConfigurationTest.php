@@ -21,6 +21,7 @@ class ConfigurationTest extends TestCase
                 'blamable' => ['provider' => 'henk', 'default_username' => 'eux'],
                 'revision' => ['factory' => 'henk'],
                 'mutation' => [],
+                'cache'    => 'entity_tracker.cache',
             ],
         ];
 
@@ -39,7 +40,10 @@ class ConfigurationTest extends TestCase
         $processor     = new Processor();
         $configuration = new Configuration();
 
-        self::assertEmpty($processor->processConfiguration($configuration, $configs));
+        self::assertSame(
+            ['cache' => 'entity_tracker.cache'],
+            $processor->processConfiguration($configuration, $configs)
+        );
     }
 
     public function emptyConfigProvider(): array
