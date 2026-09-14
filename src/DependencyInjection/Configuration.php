@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
 
     private const string CONFIG_ROOT = 'hostnet_entity_tracker';
 
+    #[\Override]
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $tree_builder = new TreeBuilder(self::CONFIG_ROOT);
