@@ -18,6 +18,7 @@ class HostnetEntityTrackerExtension extends Extension
     private const string MUTATION = 'Hostnet\Component\EntityMutation\Attributes\Mutation';
     private const string REVISION = 'Hostnet\Component\EntityRevision\Attributes\Revision';
 
+    #[\Override]
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader        = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -78,9 +79,6 @@ class HostnetEntityTrackerExtension extends Extension
     }
 
     /**
-     * @param string $annotation_class
-     * @param string $config_name
-     *
      * @throws \RuntimeException
      */
     protected function validateComponent(string $annotation_class, string $config_name): void
@@ -97,9 +95,6 @@ class HostnetEntityTrackerExtension extends Extension
     }
 
     /**
-     * @param string $annotation_class
-     * @param string $config_name
-     *
      * @throws \RuntimeException
      */
     protected function validateClass(string $annotation_class, string $config_name): void

@@ -11,9 +11,7 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class TestKernel extends Kernel
 {
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function registerBundles(): array
     {
         return [
@@ -22,16 +20,19 @@ class TestKernel extends Kernel
         ];
     }
 
+    #[\Override]
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__ . '/config/config.yaml');
     }
 
+    #[\Override]
     public function getCacheDir(): string
     {
         return __DIR__ . '/../../../var/cache/' . $this->getEnvironment();
     }
 
+    #[\Override]
     public function getLogDir(): string
     {
         return __DIR__ . '/../../../var/logs';

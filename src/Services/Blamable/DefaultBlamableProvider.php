@@ -15,22 +15,13 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
  */
 class DefaultBlamableProvider implements BlamableProviderInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $token_storage;
-
-    /**
-     * @var string
-     */
-    private $username;
-
-    public function __construct(TokenStorageInterface $token_storage, string $username)
-    {
-        $this->token_storage = $token_storage;
-        $this->username      = $username;
+    public function __construct(
+        private TokenStorageInterface $token_storage,
+        private string $username
+    ) {
     }
 
+    #[\Override]
     public function getUpdatedBy(): string
     {
         if (($token = $this->token_storage->getToken()) instanceof TokenInterface) {
@@ -40,6 +31,7 @@ class DefaultBlamableProvider implements BlamableProviderInterface
         return $this->username;
     }
 
+    #[\Override]
     public function getChangedAt(): \DateTime
     {
         return new \DateTime();

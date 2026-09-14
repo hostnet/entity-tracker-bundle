@@ -14,11 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class FunctionalTest extends KernelTestCase
 {
+    #[\Override]
     protected function setUp(): void
     {
         static::bootKernel();
     }
 
+    #[\Override]
     protected static function getKernelClass(): string
     {
         return TestKernel::class;

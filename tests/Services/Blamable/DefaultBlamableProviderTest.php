@@ -19,8 +19,9 @@ class DefaultBlamableProviderTest extends TestCase
 {
     use ProphecyTrait;
 
-    private $token_storage;
+    private TokenStorageInterface $token_storage;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->token_storage = $this->createMock(TokenStorageInterface::class);
