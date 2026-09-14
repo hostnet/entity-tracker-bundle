@@ -6,7 +6,7 @@ declare(strict_types=1);
 
 namespace Hostnet\Bundle\EntityTrackerBundle\DependencyInjection;
 
-use Hostnet\Component\EntityBlamable\Blamable;
+use Hostnet\Component\EntityBlamable\Attributes\Blamable;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -60,7 +60,7 @@ class HostnetEntityTrackerExtensionTest extends TestCase
 
         $this->extension->expects(self::once())
             ->method('validateComponent')
-            ->with('Hostnet\Component\EntityMutation\Mutation', 'mutation');
+            ->with('Hostnet\Component\EntityMutation\Attributes\Mutation', 'mutation');
 
         $this->extension->load($configs, $this->container);
     }

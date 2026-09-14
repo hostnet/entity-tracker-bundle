@@ -14,9 +14,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class HostnetEntityTrackerExtension extends Extension
 {
-    private const string BLAMABLE = 'Hostnet\Component\EntityBlamable\Blamable';
-    private const string MUTATION = 'Hostnet\Component\EntityMutation\Mutation';
-    private const string REVISION = 'Hostnet\Component\EntityRevision\Revision';
+    private const string BLAMABLE = 'Hostnet\Component\EntityBlamable\Attributes\Blamable';
+    private const string MUTATION = 'Hostnet\Component\EntityMutation\Attributes\Mutation';
+    private const string REVISION = 'Hostnet\Component\EntityRevision\Attributes\Revision';
 
     public function load(array $configs, ContainerBuilder $container): void
     {

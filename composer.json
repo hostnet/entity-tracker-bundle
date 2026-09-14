@@ -5,7 +5,7 @@
     "minimum-stability": "stable",
     "require": {
         "php":                              "^8.3",
-        "hostnet/entity-tracker-component": "^2.3.0",
+        "hostnet/entity-tracker-component": "^3.0.0",
         "psr/log":                          "^1.1.0||^2.0.0||^3.0.0",
         "symfony/config":                   "^5.4||^6.0",
         "symfony/dependency-injection":     "^5.4||^6.0",
@@ -13,7 +13,7 @@
         "symfony/yaml":                     "^5.4||^6.0"
     },
     "require-dev": {
-        "hostnet/entity-blamable-component": "^1.1.0",
+        "hostnet/entity-blamable-component": "^2.0.0",
         "hostnet/phpcs-tool":                "^9.1.0",
         "phpspec/prophecy":                  "^1.19",
         "phpspec/prophecy-phpunit":          "^2.2",
@@ -27,9 +27,9 @@
         "hostnet/entity-revision-component": "Provides the @Revision annotation/attribute and listeners"
     },
     "conflict": {
-        "hostnet/entity-blamable-component": "<1.1.0",
-        "hostnet/entity-mutation-component": "<1.1.0",
-        "hostnet/entity-revision-component": "<1.2.0"
+        "hostnet/entity-blamable-component": "<2.0.0",
+        "hostnet/entity-mutation-component": "<2.0.0",
+        "hostnet/entity-revision-component": "<2.0.0"
     },
     "autoload": {
         "psr-4": {

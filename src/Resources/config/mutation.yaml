@@ -2,7 +2,7 @@ services:
     entity_tracker.resolver.mutation:
         class: Hostnet\Component\EntityMutation\Resolver\MutationResolver
         arguments:
-            - "@entity_tracker.provider.annotation_metadata"
+            - "@entity_tracker.provider.entity_metadata"
 
     entity_tracker.listener.mutation:
         class: Hostnet\Component\EntityMutation\Listener\MutationListener
