@@ -13,7 +13,7 @@
         "symfony/yaml":                     "^6.4"
     },
     "require-dev": {
-        "hostnet/entity-blamable-component": "^2.0.0",
+        "hostnet/entity-blamable-component": "^2.0.1",
         "hostnet/phpcs-tool":                "^9.1.0",
         "phpspec/prophecy":                  "^1.19",
         "phpspec/prophecy-phpunit":          "^2.2",
@@ -22,12 +22,12 @@
         "symfony/security-bundle":           "^6.4"
     },
     "suggest": {
-        "hostnet/entity-blamable-component": "Provides the @Blamable annotation/attribute and listeners",
-        "hostnet/entity-mutation-component": "Provides the @Mutation annotation/attribute and listeners",
-        "hostnet/entity-revision-component": "Provides the @Revision annotation/attribute and listeners"
+        "hostnet/entity-blamable-component": "Provides the #[Blamable] attribute and listeners",
+        "hostnet/entity-mutation-component": "Provides the #[Mutation] attribute and listeners",
+        "hostnet/entity-revision-component": "Provides the #[Revision] attribute and listeners"
     },
     "conflict": {
-        "hostnet/entity-blamable-component": "<2.0.0",
+        "hostnet/entity-blamable-component": "<2.0.1",
         "hostnet/entity-mutation-component": "<2.0.0",
         "hostnet/entity-revision-component": "<2.0.0"
     },
